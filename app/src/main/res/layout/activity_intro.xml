@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000"
+    tools:context=".Intro.IntroActivity">
+
+
+
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:id="@+id/viewpager"
+        android:layout_height="match_parent">
+
+    </androidx.viewpager.widget.ViewPager>
+
+
+
+
+    <com.github.vivchar.viewpagerindicator.ViewPagerIndicator
+        android:id = "@+id/view_pager_indicator"
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:layout_gravity = "center_horizontal|bottom"
+        android:layout_marginBottom = "8dp"
+        app:delimiterSize = "13dp"
+        android:layout_centerHorizontal="true"
+        app:itemIcon = "@drawable/ic_brightness_1_black_24dp"
+        app:itemScale = "1"
+        app:itemSelectedTint = "#f71b1b"
+        app:itemSize = "10dp"
+        android:layout_above="@+id/buttonPanel"
+        app:itemTint = "#7c7c7c"
+        />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="ПРОДОЛЖИТЬ"
+        android:background="@drawable/btn_bg"
+        android:layout_margin="10dp"
+        android:textColor="#FFF"
+
+        android:id="@+id/buttonPanel"
+        android:layout_alignParentBottom="true"/>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/toolbar"
+        android:layout_height="60dp">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:src="@drawable/alfa_logo2"
+            android:layout_centerVertical="true"
+            android:layout_height="35dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:text="ПОМОЩЬ"
+            android:textColor="#FFFFFF"
+            android:layout_marginRight="16dp"
+            android:textSize="11dp"
+            android:id="@+id/help"
+            android:textStyle="bold"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="ВОЙТИ"
+            android:layout_toStartOf="@+id/help"
+            android:textColor="#FFFFFF"
+            android:layout_marginRight="16dp"
+            android:textSize="11dp"
+            android:id="@+id/sign_in"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

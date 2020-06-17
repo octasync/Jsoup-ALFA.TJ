@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+<RelativeLayout
+    android:layout_width="160dp"
+    android:id="@+id/action_bar_spinner"
+    android:background="#e8e8e8"
+    android:layout_margin="8dp"
+    android:layout_height="90dp">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="202dp"
+        android:scaleType="centerCrop"
+        android:id="@+id/image"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/shape_rectangle_with_radius1"
+        android:layout_margin="8dp"
+        android:paddingRight="2dp"
+        android:paddingLeft="2dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:id="@+id/timeLapse"
+
+            android:textSize="10.5dp"
+            android:textColor="#FFF"
+            />
+
+
+
+    </RelativeLayout>
+</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_toEndOf="@+id/action_bar_spinner"
+        android:id="@+id/rela1"
+        android:layout_marginBottom="8dp"
+        android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_toRightOf="@+id/image2"
+            android:layout_marginRight="5dp"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/dops"
+                android:text="ГОНКИ НА НОВОЙ BUGATTI DIVO ЗА 350.000.000 РУБЛЕЙ А GTA 5 ONLINE WITH EXILE ALEX FOX AND WARPATH"
+                android:textColor="#1c1c1c"
+                android:textStyle="bold"
+                android:id="@+id/description"
+                android:textSize="13dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/description"
+                android:id="@+id/nameOfChannel"
+                android:singleLine="true"
+                android:text="TNT _ 505 просмотров _ Год назад"
+                android:textSize="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:singleLine="true"
+                android:layout_marginTop="2dp"
+                android:layout_below="@+id/nameOfChannel"
+                android:id="@+id/dops2"
+                android:textSize="10dp"
+                android:text="planetaplany dsujh dsv"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

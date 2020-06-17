@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#1f2122"
+    android:layout_height="match_parent"
+    tools:context=".Four">
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comming soon"
+        android:textColor="#FFF"
+        android:fontFamily="@font/googlesans_medium"
+        android:textSize="25dp"
+        android:id="@+id/com"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/animation_view"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="01.01.2020"
+    android:textColor="#FFF"
+    android:layout_below="@+id/com"
+        android:id="@+id/comicon"
+    android:fontFamily="@font/googlesans_medium"
+    android:textSize="20dp"
+    android:layout_centerHorizontal="true"
+    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Финальное обновление с доступом ко всем возможностям!"
+        android:textAlignment="center"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:textColor="#FFF"
+        android:layout_below="@+id/comicon"
+        android:fontFamily="@font/googlesans_medium"
+        android:textSize="13dp"
+        android:layout_centerHorizontal="true"
+        />
+</RelativeLayout>

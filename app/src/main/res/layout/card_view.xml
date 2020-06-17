@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#282828"
+    android:orientation="vertical">
+
+
+
+<RelativeLayout
+    android:layout_width="140dp"
+    android:layout_margin="10dp"
+    android:id="@+id/action_bar_spinner"
+    android:background="#1a1a1a"
+    android:layout_height="202dp">
+    <ImageView
+        android:layout_width="140dp"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:id="@+id/image"/>
+</RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_toEndOf="@+id/action_bar_spinner"
+        android:id="@+id/rela1"
+        android:layout_marginBottom="8dp"
+        android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_toRightOf="@+id/image2"
+            android:layout_marginRight="5dp"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/description"
+            android:layout_marginRight="30dp"
+            android:maxLines="2"
+            android:textColor="#FFF"
+            android:fontFamily="@font/googlesans_regular"
+            android:textSize="15dp"
+            android:textStyle="bold"
+
+            android:text="Основание осман"
+            />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/age"
+                android:text="16+"
+                android:maxLines="2"
+                android:textColor="#FFF"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/googlesans_regular"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2001"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/description"
+                android:id="@+id/timeLapse"
+                android:textSize="10.5dp"
+                android:textColor="#FFF"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/timeLapse"
+                android:id="@+id/title"
+                android:text="TNT _ 505 просмотров _ Год назад"
+                android:layout_marginTop="4dp"
+                android:textColor="#A9A9A9"
+                android:textSize="12sp"
+                />
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="#414141"
+        android:layout_below="@+id/action_bar_spinner"
+        android:layout_height="1dp">
+
+    </RelativeLayout>
+
+</RelativeLayout>

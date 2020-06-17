@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Intro.Frag3">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/thrid"
+        android:scaleType="centerCrop"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/trend_donald_sterling"
+        android:layout_height="500dp">
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/trend_donald_sterling2"
+        android:layout_height="150dp">
+
+    </FrameLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Больше 38.000 часов фильмов и сериалов собраны для вас"
+        android:textColor="#FFF"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textSize="20dp"
+        android:id="@+id/main"
+        android:textStyle="bold"
+        android:fontFamily="@font/googlesans_medium"
+        android:textAlignment="center"
+
+        />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_below="@+id/main"
+        android:layout_marginTop="20dp"
+        android:textColor="#FFF"
+        android:id="@+id/checkbox"
+        android:buttonTint="#FFF"
+        android:layout_centerHorizontal="true"
+        android:text="Я всё понял!"/>
+
+
+
+
+</RelativeLayout>

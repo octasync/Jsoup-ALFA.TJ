@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/parent_view"
+    android:background="@color/colorPrimary"
+    android:animateLayoutChanges="true"
+    tools:context=".VideoViewActivity">
+
+
+    <org.salient.artplayer.VideoView
+        android:id="@+id/video_view"
+        android:layout_width="match_parent"
+        android:layout_height="202dp"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/video_view"
+        android:id="@+id/progress"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:theme="@style/ProgressBarStyle"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/video_view"
+        android:id="@+id/scrolling"
+        android:visibility="visible"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/MainText"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="4dp"
+                android:text="Horton"
+                android:textColor="#FFF"
+                android:fontFamily="@font/googlesans_medium"
+                android:textSize="20dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/raiting"
+                android:text="93% Cоответствия"
+                android:layout_below="@+id/MainText"
+                android:layout_marginLeft="8dp"
+                android:textSize="12dp"
+                android:fontFamily="@font/googlesans_regular"
+                android:textColor="#66BB6A"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/raiting"
+                android:layout_marginLeft="16dp"
+                android:layout_below="@+id/MainText"
+                android:text="2019"
+                android:id="@+id/yearss"
+                android:fontFamily="@font/googlesans_regular"
+                android:textColor="#F4F2F4"
+                android:textSize="12dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/yearss"
+                android:layout_marginLeft="16dp"
+                android:layout_below="@+id/MainText"
+                android:fontFamily="@font/googlesans_regular"
+                android:text="2 сезона"
+                android:textColor="#F4F2F4"
+                android:id="@+id/seasons"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/seasons"
+                android:layout_marginLeft="16dp"
+                android:id="@+id/buget"
+                android:layout_below="@+id/MainText"
+                android:fontFamily="@font/googlesans_regular"
+                android:text="$85 000 000"
+                android:textColor="#F4F2F4"
+                android:textSize="12dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/descript"
+                android:textColor="#F4F2F4"
+                android:layout_margin="8dp"
+                android:layout_below="@+id/raiting"
+                android:text="Архтектор муравей бредёт на своеё волне генератор ахиней он несёт в своей голове по ххитину себя бей что вырвешься из сетей архитектор муравей"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/starring"
+                android:layout_below="@+id/descript"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:textSize="12dp"
+                android:text="Актёры: Том Круз, Миша Марвин, Джессика Альба"
+                android:textColor="#9E9E9E"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/director"
+                android:layout_below="@+id/starring"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:textSize="12dp"
+                android:text="Режиссёр: Люк Бессон"
+                android:textColor="#9E9E9E"/>
+
+            <RelativeLayout
+                android:layout_width="66dp"
+                android:id="@+id/btn1"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_below="@+id/director"
+                android:layout_height="66dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        app:srcCompat="@drawable/ic_baseline_filter_none_24"
+                        android:tint="#FFF"
+                        android:padding="3dp"
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/i1"
+                        android:layout_height="32dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_below="@+id/i1"
+                        android:layout_centerHorizontal="true"
+                        android:text="Копировать"
+                        android:singleLine="true"
+                        android:textSize="12dp"
+                        android:id="@+id/likes"
+                        android:textColor="#9E9E9E"
+                        android:layout_height="wrap_content"
+                        />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:id="@+id/btn2"
+                android:layout_toEndOf="@+id/btn1"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_below="@+id/director"
+                android:layout_height="66dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        app:srcCompat="@drawable/ic_baseline_cloud_download_24"
+                        android:tint="#FFF"
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/i1"
+                        android:layout_height="32dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_below="@+id/i1"
+                        android:layout_centerHorizontal="true"
+                        android:text="Скачать"
+                        android:textSize="12dp"
+                        android:id="@+id/likes"
+                        android:textColor="#9E9E9E"
+                        android:layout_height="wrap_content"
+                        />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="#000"
+                android:id="@+id/design"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/btn1"></RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="50dp"
+                android:background="@drawable/btn_bg2"
+                android:layout_marginLeft="8dp"
+                android:layout_below="@+id/design"
+                android:layout_marginTop="2dp"
+                android:id="@+id/line"
+                android:layout_height="5dp">
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/design"
+                android:layout_margin="8dp"
+                android:text="Серии"
+                android:textColor="#FFF"
+                android:textSize="15dp"
+                android:textAllCaps="true"
+                android:id="@+id/series"
+                android:fontFamily="@font/googlesans_medium"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view2"
+                android:layout_below="@+id/series"
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

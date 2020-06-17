@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="#282828"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#282828">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/s2"
+                    android:visibility="visible"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_centerVertical="true"
+                        android:paddingRight="24dp"
+                        android:id="@+id/back"
+                        app:srcCompat="@drawable/ic_arrow_back_black_24dp"
+                        android:tint="#FFF"
+                        />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/et_bg2"
+                        android:hint="Поиск..."
+                        android:textColorHint="#e0e0e0"
+                        android:layout_toEndOf="@+id/back"
+                        android:inputType="text"
+                        android:layout_centerVertical="true"
+                        android:textColor="#FFF"
+                        android:textSize="13sp"
+                        android:id="@+id/search_edit_frame"
+                        android:layout_toStartOf="@+id/search"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="16dp">
+                        <requestFocus/>
+                    </EditText>
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_centerVertical="true"
+                        android:padding="12dp"
+                        android:layout_alignParentEnd="true"
+                        android:id="@+id/search"
+                        app:srcCompat="@drawable/ic_search_black_24dp"
+                        android:tint="#FFF"
+                        />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/toolbar"
+    android:visibility="visible"
+    android:id="@+id/main2"
+    android:layout_marginTop="2dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/progressBar"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="80dp">
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingBottom="80dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/naetomvsyo"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="80dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingRight="16dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="10sp"
+            android:elevation="5sp"
+            android:paddingBottom="10sp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/et_bg3"
+            android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:text="На этом, пока что, всё!"
+            android:textStyle="normal"
+            android:textSize="14dp"
+            android:textColor="#FFF"
+
+            />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+
+
+    <ProgressBar
+        android:theme="@style/ProgressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:id="@+id/progress_circular"
+        android:layout_marginTop="18dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:visibility="visible"
+        android:id="@+id/recycler_view2"
+        android:layout_height="match_parent">
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+
+</RelativeLayout>

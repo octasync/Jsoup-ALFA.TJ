@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ScrollingActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:id="@+id/bottom1"
+            android:scrollbarAlwaysDrawVerticalTrack="false"
+            android:scrollbarAlwaysDrawHorizontalTrack="false"
+            android:scrollbarSize="0dp"
+            android:layout_height="100dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/recycler_view"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/item1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/round_back"
+                        android:padding="8dp"
+                        android:layout_margin="6dp"
+                        android:tint="#FFF"
+                        android:id="@+id/image1"
+                        app:srcCompat="@drawable/ic_whatshot_black_24dp"
+                        android:layout_centerHorizontal="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/image1"
+                        android:layout_centerHorizontal="true"
+                        android:text="Музыка"
+                        android:textColor="#ff606060"
+                        android:textSize="12sp"
+                        />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="5dp"
+                    android:id="@+id/item2"
+                    android:layout_toEndOf="@+id/item1"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/round_back"
+                        android:padding="10dp"
+                        android:layout_margin="6dp"
+                        android:tint="#FFF"
+                        android:id="@+id/image1"
+                        app:srcCompat="@drawable/ic_playgames"
+                        android:layout_centerHorizontal="true"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/image1"
+                        android:layout_centerHorizontal="true"
+                        android:text="Игры"
+                        android:textColor="#ff606060"
+                        android:textSize="12sp"
+                        />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/item3"
+                    android:layout_margin="5dp"
+                    android:layout_toEndOf="@+id/item2"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/round_back"
+                        android:padding="8dp"
+                        android:layout_margin="6dp"
+                        android:tint="#FFF"
+                        android:id="@+id/image1"
+                        app:srcCompat="@drawable/ic_whatshot_black_24dp"
+                        android:layout_centerHorizontal="true"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/image1"
+                        android:layout_centerHorizontal="true"
+                        android:text="Новости"
+                        android:textColor="#ff606060"
+                        android:textSize="12sp"
+                        />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/item4"
+                    android:layout_margin="5dp"
+                    android:layout_toEndOf="@+id/item3"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/round_back"
+                        android:padding="8dp"
+                        android:layout_margin="6dp"
+                        android:tint="#FFF"
+                        android:id="@+id/image1"
+                        app:srcCompat="@drawable/ic_whatshot_black_24dp"
+                        android:layout_centerHorizontal="true"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/image1"
+                        android:layout_centerHorizontal="true"
+                        android:text="Фильмы"
+                        android:textColor="#ff606060"
+                        android:textSize="12sp"
+                        />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/item5"
+                    android:layout_margin="5dp"
+                    android:layout_toEndOf="@id/item4"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/round_back"
+                        android:padding="8dp"
+                        android:layout_margin="6dp"
+                        android:tint="#FFF"
+                        android:id="@+id/image1"
+                        app:srcCompat="@drawable/ic_whatshot_black_24dp"
+                        android:layout_centerHorizontal="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/image1"
+                        android:layout_centerHorizontal="true"
+                        android:text="Юмор"
+                        android:textColor="#ff606060"
+                        android:textSize="12sp"
+                        />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/item6"
+                    android:layout_toEndOf="@id/item5"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/round_back"
+                        android:padding="8dp"
+                        android:layout_margin="6dp"
+                        android:tint="#FFF"
+                        android:id="@+id/image1"
+                        app:srcCompat="@drawable/ic_whatshot_black_24dp"
+                        android:layout_centerHorizontal="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/image1"
+                        android:layout_centerHorizontal="true"
+                        android:text="Наука"
+                        android:textColor="#ff606060"
+                        android:textSize="12sp"
+                        />
+
+                </RelativeLayout>
+
+
+
+
+
+
+
+            </RelativeLayout>
+
+
+        </HorizontalScrollView>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <include layout="@layout/content_scrolling2" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

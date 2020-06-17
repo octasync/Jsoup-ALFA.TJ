@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:animateLayoutChanges="true"
+    android:background="#282828"
+    android:layout_width="match_parent">
+
+
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:animateLayoutChanges="true"
+    android:background="#282828"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#282828"
+            app:layout_scrollFlags="scroll|enterAlways|snap" >
+
+         <RelativeLayout
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+           <RelativeLayout
+                android:layout_width="match_parent"
+               android:id="@+id/s1"
+               android:visibility="visible"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/alfa_logo2"
+                    android:id="@+id/logogogo"
+                    android:tint="#FF0000"/>
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:padding="12dp"
+                    app:srcCompat="@drawable/ic_search_black_24dp"
+                    android:tint="#FFF"
+                    android:layout_toLeftOf="@+id/sort"
+                    android:id="@+id/search"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="4dp"
+                    />
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:id="@+id/sort"
+                    android:padding="12dp"
+                    app:srcCompat="@drawable/ic_surround_sound_black_24dp"
+                    android:layout_alignParentRight="true"
+                    android:tint="#FFF"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="4dp"
+                    />
+
+
+            </RelativeLayout>
+
+         </RelativeLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:layout_height="match_parent"
+    android:id="@+id/planeta"
+    android:background="#282828"
+    android:animateLayoutChanges="true"
+    tools:context=".MainActivity">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#282828"
+        >
+
+    </androidx.viewpager.widget.ViewPager>
+
+
+
+
+</RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/nav3"
+        android:animateLayoutChanges="true"
+        android:layout_height="match_parent">
+
+
+    </RelativeLayout>
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/search_view"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+    </androidx.viewpager.widget.ViewPager>
+
+
+
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:background="@drawable/et_bg6"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:padding="20dp"
+        android:layout_margin="20dp"
+        android:id="@+id/settings_size"
+        android:visibility="gone"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textColor="#FFFFFF"
+            android:id="@+id/title"
+            android:text="Настройка размера нижней части плеера..."/>
+
+
+
+
+
+        <com.warkiz.tickseekbar.TickSeekBar
+            android:id="@+id/listener"
+            android:layout_below="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/listener"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="#FFFFFF"
+            android:id="@+id/firstest"
+            android:text="0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/listener"
+            android:layout_marginTop="3dp"
+            android:textColor="#FFFFFF"
+            android:id="@+id/secondest"
+            android:layout_alignParentEnd="true"
+            android:text="150"/>
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:padding="10dp"
+            android:layout_height="33dp"
+            android:text="Сохранить изменения"
+            android:textColor="#FFF"
+            android:id="@+id/btn_save"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/secondest"
+            android:layout_alignParentEnd="true"
+            />
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>
+
