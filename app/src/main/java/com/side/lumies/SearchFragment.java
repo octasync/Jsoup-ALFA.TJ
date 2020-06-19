@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -88,6 +89,7 @@ public class SearchFragment extends Fragment implements RecyclerAdapterSearch.It
         clear();
         search_url = s;
         search_url = search_url.replace(" ", "%20");
+        Toast.makeText(getActivity(), search_url, Toast.LENGTH_SHORT).show();
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         ((InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(getView().getWindowToken(), 0);
         page = 1;
@@ -95,7 +97,6 @@ public class SearchFragment extends Fragment implements RecyclerAdapterSearch.It
         recyclerView2.setVisibility(View.GONE);
         progress_circular.setVisibility(View.VISIBLE);
         main2.setVisibility(View.VISIBLE);
-        ((MainActivity) getActivity()).checkEngine = true;
     }
 
 
@@ -184,7 +185,6 @@ public class SearchFragment extends Fragment implements RecyclerAdapterSearch.It
                     progress_circular.setVisibility(View.VISIBLE);
                     main2.setVisibility(View.VISIBLE);
 
-                    ((MainActivity) getActivity()).checkEngine = true;
 
 
                     return true;
@@ -242,7 +242,6 @@ public class SearchFragment extends Fragment implements RecyclerAdapterSearch.It
                 progress_circular.setVisibility(View.VISIBLE);
                 main2.setVisibility(View.VISIBLE);
 
-                ((MainActivity) getActivity()).checkEngine = true;
 
 
             }
@@ -339,6 +338,7 @@ public class SearchFragment extends Fragment implements RecyclerAdapterSearch.It
 
 
                 Document doc = Jsoup.connect("http://alfa.tj/index.php/smart/search?q=" + search_url).get();
+//                Toast.makeText(getContext(), search_url, Toast.LENGTH_SHORT).show();
 
 
                 Elements hrefElements = doc.select("div.moviePlayPlus");

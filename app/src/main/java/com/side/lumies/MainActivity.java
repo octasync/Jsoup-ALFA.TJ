@@ -1,66 +1,38 @@
 package com.side.lumies;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Process;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.github.javiersantos.bottomdialogs.BottomDialog;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.squareup.picasso.Picasso;
 import com.warkiz.tickseekbar.OnSeekChangeListener;
 import com.warkiz.tickseekbar.SeekParams;
 import com.warkiz.tickseekbar.TickSeekBar;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.DataNode;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.salient.artplayer.MediaPlayerManager;
-import org.salient.artplayer.ScaleType;
-import org.salient.artplayer.SystemMediaPlayer;
 import org.salient.artplayer.VideoView;
-import org.salient.artplayer.exo.ExoPlayer;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
@@ -71,83 +43,64 @@ import static android.os.Process.THREAD_PRIORITY_MORE_FAVORABLE;
  * Чуть-чуть грязно, бывает...
  */
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-    RecyclerView.Adapter mAdapter;
-
-    String password11 = "", username11 = "";
-
+    public BottomNavigationView navigation;
     public VideoView mVideoView;
     public String VideoUrlStream = "";
-
+    public String viseoUrl = "";
+    public int i = 0;
+    public String url = "";
+    public boolean checkEngine = false;
+    RecyclerView.Adapter mAdapter;
+    String password11 = "", username11 = "";
     String search_url = "";
-
-    private TextView mTextMessage;
-    private SectionsPageAdapter mSectionsPageAdapter;
-
     ViewPager mViewPager, search_view;
     MenuItem prevMenuItem;
-
-    public String viseoUrl = "";
-
-    public int i = 0;
     TextView counter;
-    public String url = "";
-
     ImageView search, back;
-
     Boolean isCollapsed = false;
-
-
     String firstDate;
     String secondDate;
     RelativeLayout planeta;
+    FrameLayout podstilka;
     AppBarLayout appBarLayout;
     ImageView logogogo;
-
     ImageView sort;
-
     RelativeLayout setting_size;
-
     RelativeLayout nav2;
-
     Button btn_save;
 
-
-
-
-
+    String bools = "first";
+    String bools2 = "first";
+    String bools3 = "first";
+    int firstable = 80, secondable = 1000;
+    int size = 80;
+    TextView progress;
+    int countSeasons = 0;
+    int countSeries = 0;
+    int[] mass;
+    String[] titles;
+    ArrayList<String> title = new ArrayList<>();
+    private TextView mTextMessage;
+    private SectionsPageAdapter mSectionsPageAdapter;
 
     private void setupViewPager(ViewPager viewPager) {
         SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
         adapter.addFragment(new Two());
         adapter.addFragment(new SearchFragment());
+        adapter.addFragment(new Three());
+        adapter.addFragment(new Four());
+        adapter.addFragment(new Five());
 
         viewPager.setAdapter(adapter);
     }
-
-    String bools = "first";
-    String bools2 = "first";
-    String bools3 = "first";
-
-    int firstable = 80, secondable = 1000;
-
-    int size = 80;
 
     private void setupViewPager2(ViewPager viewPager) {
         SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
         adapter.addFragment(new SearchFragment());
         viewPager.setAdapter(adapter);
     }
-
-
-    TextView progress;
-
-
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,14 +123,14 @@ public class MainActivity extends AppCompatActivity{
         listenerSeekBar.setMax(150);
         listenerSeekBar.setMin(-50);
 
-        listenerSeekBar.setProgress(firstable+0.0f);
-        progress = (TextView) findViewById(R.id.firstest);
-        progress.setText(listenerSeekBar.getProgress()+"");
+        listenerSeekBar.setProgress(firstable + 0.0f);
+        progress = findViewById(R.id.firstest);
+        progress.setText(listenerSeekBar.getProgress() + "");
 
         listenerSeekBar.setOnSeekChangeListener(new OnSeekChangeListener() {
             @Override
             public void onSeeking(SeekParams seekParams) {
-                progress.setText(seekParams.progress+"");
+                progress.setText(seekParams.progress + "");
                 firstable = seekParams.progress;
                 SharedPreferences.Editor editor = getSharedPreferences("size_of_bar", MODE_PRIVATE).edit();
                 editor.putInt("username", firstable);
@@ -186,20 +139,20 @@ public class MainActivity extends AppCompatActivity{
 
             @Override
             public void onStartTrackingTouch(TickSeekBar seekBar) {
-                progress.setText(seekBar.getProgress()+"");
+                progress.setText(seekBar.getProgress() + "");
 
                 firstable = seekBar.getProgress();
             }
 
             @Override
             public void onStopTrackingTouch(TickSeekBar seekBar) {
-                progress.setText(seekBar.getProgress()+"");
+                progress.setText(seekBar.getProgress() + "");
 
 
             }
         });
 
-
+        GoCheck();
 
         sort.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -225,13 +178,13 @@ public class MainActivity extends AppCompatActivity{
         });
 
 
-
-        logogogo = (ImageView)findViewById(R.id.logogogo);
+        logogogo = findViewById(R.id.logogogo);
         search_view = findViewById(R.id.search_view);
         search_view.setCurrentItem(0);
         search_view.setOffscreenPageLimit(2);
         setupViewPager2(search_view);
 
+        podstilka = findViewById(R.id.podstilka);
 
         search = findViewById(R.id.search);
 
@@ -245,43 +198,34 @@ public class MainActivity extends AppCompatActivity{
         });
 
 
+        mVideoView = findViewById(R.id.videoView);
 
 
-
-
-
-
-
-        mTextMessage = (TextView) findViewById(R.id.message);
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        mTextMessage = findViewById(R.id.message);
+        navigation = findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(this);
+        mViewPager = findViewById(R.id.container);
         setupViewPager(mViewPager);
         mViewPager.setCurrentItem(0);
         mViewPager.setOffscreenPageLimit(4);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
 
             @Override
             public void onPageSelected(int position) {
 
 
-                if (position==0){
-                    nav2.setVisibility(View.VISIBLE);
+                if (position == 0) {
                     appBarLayout.setExpanded(true, true);
-                    new Handler().postDelayed(new Runnable(){
-                        @Override
-                        public void run() {
-                            appBarLayout.setVisibility(View.VISIBLE);
-                        }
-                    }, 250);
+                    navigation.getMenu().getItem(0).setChecked(true);
+                    appBarLayout.setVisibility(View.VISIBLE);
                 }
-                else if (position==1){
-                    nav2.setVisibility(View.VISIBLE);
-
+                else if (position == 1) {
+                    navigation.getMenu().getItem(1).setChecked(true);
                     appBarLayout.setExpanded(false, true);
-                    new Handler().postDelayed(new Runnable(){
+                    new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             appBarLayout.setVisibility(View.GONE);
@@ -289,36 +233,39 @@ public class MainActivity extends AppCompatActivity{
                     }, 250);
 
                 }
+                else if (position == 2) {
+                    appBarLayout.setExpanded(true, true);
+                    navigation.getMenu().getItem(2).setChecked(true);
+                    appBarLayout.setVisibility(View.VISIBLE);
+                }
+                else if (position == 3) {
+                    appBarLayout.setExpanded(true, true);
+                    navigation.getMenu().getItem(3).setChecked(true);
+                    appBarLayout.setVisibility(View.VISIBLE);
+                }
+                else if (position == 4) {
+                    appBarLayout.setExpanded(false, true);
+                    navigation.getMenu().getItem(4).setChecked(true);
+                    appBarLayout.setVisibility(View.VISIBLE);
 
+
+                }
 
             }
-
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
-
-
 
     }
 
 
-
-
-
-
-
-
-    public boolean checkEngine  = false;
-
     @Override
     public void onBackPressed() {
-        if (mViewPager.getCurrentItem()==1){
-            mViewPager.setCurrentItem(0);
-        }
-        else {
+        if (mViewPager.getCurrentItem() == 0) {
+            mViewPager.setCurrentItem(1);
+        } else {
             onBackPressed();
 
 
@@ -328,18 +275,123 @@ public class MainActivity extends AppCompatActivity{
         }
 
 
+    }
 
+    public void GoCheck() {
+        new FindVideoUrl().execute();
     }
 
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
 
-    int countSeasons = 0;
-    int countSeries = 0;
-    int[] mass;
 
-    String[] titles ;
+            case R.id.navigation_home:
+                appBarLayout.setExpanded(true, true);
+                mViewPager.setCurrentItem(0);
+                break;
+            case R.id.navigation_dashboard:
+                appBarLayout.setExpanded(false, true);
+                mViewPager.setCurrentItem(1);
+                break;
+            case R.id.navigation_notifications:
+                appBarLayout.setExpanded(true, true);
+                mViewPager.setCurrentItem(2);
+                break;
+            case R.id.podborki:
+                appBarLayout.setExpanded(true, true);
+                mViewPager.setCurrentItem(3);
+                break;
+            case R.id.user_profile:
+                appBarLayout.setExpanded(false, true);
+                mViewPager.setCurrentItem(4);
 
-    ArrayList<String> title = new ArrayList<>();
+                break;
+        }
+
+        return true;
+    }
+
+    static class FindVideoUrl extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            Process.setThreadPriority(THREAD_PRIORITY_BACKGROUND + THREAD_PRIORITY_MORE_FAVORABLE);
+
+            try {
+                Connection.Response res = Jsoup.connect("https://hello.tj/index.php/auth")
+                        .data("mobile2", "985602001")
+                        .data("password2", "planeta...333")
+                        .data("checkbox1", "1")
+                        .data("enter_button", "1")
+                        .method(Connection.Method.POST)
+                        .execute();
+
+                Document doc = res.parse();
+                String sessionId = res.cookie("sessionVal");
+                Log.d("TAGsssssss", "doInBackground: " + sessionId);
+
+                Document doc2 = Jsoup.connect("http://alfa.tj/")
+                        .cookie("sessionVal", sessionId)
+                        .get();
+
+                Log.d("Googlegg", "doInBackground: " + doc2.text());
+
+/*
+                Document doc2 = Jsoup.connect("https://alfa.tj/smart/player/"+url).get();
+
+                Element link = doc2.select("source").first();
+
+                if (link == null) {
+                    Elements linksOnPage = doc2.select("script");
+                    Matcher matcher = null;
+
+                    Pattern pattern = Pattern.compile("advert.videoSource = '(.+?)';");
+
+                    for (Element element : linksOnPage) {
+                        for (DataNode node : element.dataNodes()) {
+                            matcher = pattern.matcher(node.getWholeData());
+                            while (matcher.find()) {
+                                VideoUrlStream = matcher.group(1);
+                            }
+                        }
+                    }
+                }
+*/
+
+            } catch (IOException e) {
+                e.getMessage();
+            }
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+         /*
+            if (!VideoUrlStream.equals("{full_link_to_video}")) {
+                Toast.makeText(getApplicationContext(), VideoUrlStream, Toast.LENGTH_LONG).show();
+                playVideo();
+            }
+            else{
+                new GetContacts2().execute();
+            }
+
+          */
+        }
+
+
+    }
 
     class GetContacts2 extends AsyncTask<Void, Void, Void> {
 
@@ -348,7 +400,6 @@ public class MainActivity extends AppCompatActivity{
         protected void onPreExecute() {
             super.onPreExecute();
             title.clear();
-
 
 
         }
@@ -391,21 +442,16 @@ public class MainActivity extends AppCompatActivity{
 */
 
 
-
-
-
             try {
 
 
-
-
-                Document doc = Jsoup.connect("https://alfa.tj/smart/player/"+url).get();
+                Document doc = Jsoup.connect("https://alfa.tj/smart/player/" + url).get();
 
                 Elements hrefElements = doc.select("div.col-2.movieListPlay");
 
                 size = hrefElements.size();
                 titles = new String[size];
-                Log.d("whaaaat", "doInBackground: "+size);
+                Log.d("whaaaat", "doInBackground: " + size);
 
                 for (int i = 0; i < hrefElements.size(); i++) {
 
@@ -416,73 +462,6 @@ public class MainActivity extends AppCompatActivity{
                 title.addAll(Arrays.asList(titles));
 
 
-
-
-
-            } catch (IOException e) {
-                e.getMessage();
-            }
-
-
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            super.onPostExecute(result);
-
-
-        }
-
-
-    }
-
-
-    public void GoCheck(){
-        new FindVideoUrl().execute();
-    }
-
-    class FindVideoUrl extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-
-
-        }
-
-        @Override
-        protected Void doInBackground(Void... arg0) {
-            Process.setThreadPriority(THREAD_PRIORITY_BACKGROUND + THREAD_PRIORITY_MORE_FAVORABLE);
-
-            try {
-
-
-
-
-                Document doc2 = Jsoup.connect("https://alfa.tj/smart/player/"+url).get();
-
-                Element link = doc2.select("source").first();
-
-                if (link == null) {
-                    Elements linksOnPage = doc2.select("script");
-                    Matcher matcher = null;
-
-                    Pattern pattern = Pattern.compile("advert.videoSource = '(.+?)';");
-
-                    for (Element element : linksOnPage) {
-                        for (DataNode node : element.dataNodes()) {
-                            matcher = pattern.matcher(node.getWholeData());
-                            while (matcher.find()) {
-                                VideoUrlStream = matcher.group(1);
-                            }
-                        }
-                    }
-                }
-
-
             } catch (IOException e) {
                 e.getMessage();
             }
@@ -494,37 +473,12 @@ public class MainActivity extends AppCompatActivity{
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            if (!VideoUrlStream.equals("{full_link_to_video}")) {
-            }
-            else{
-                new GetContacts2().execute();
-            }
+
+
         }
 
 
     }
-
-    public void dialogIcon(String s1, String s2){
-
-
-        new BottomDialog.Builder(this)
-                .setTitle(s1)
-                .setContent(s2)
-                .setCancelable(true)
-                .setIcon(R.drawable.ic_play_circle_filled_black_24dp)
-                .setPositiveText("OK")
-                .setPositiveTextColorResource(android.R.color.white)
-                .setPositiveBackgroundColorResource(R.color.colorAccent)
-                .onPositive(new BottomDialog.ButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull BottomDialog bottomDialog) {
-
-                    }
-                }).show();
-    }
-
-
-
 
 
 }

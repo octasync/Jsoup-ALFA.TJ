@@ -98,6 +98,7 @@
     android:id="@+id/planeta"
     android:background="#282828"
     android:animateLayoutChanges="true"
+    android:layout_marginBottom="40dp"
     tools:context=".MainActivity">
 
     <androidx.viewpager.widget.ViewPager
@@ -120,6 +121,50 @@
         android:id="@+id/nav3"
         android:animateLayoutChanges="true"
         android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/nav2"
+            android:layout_height="wrap_content">
+
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/navigation"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="#282828"
+                app:labelVisibilityMode="labeled"
+                app:itemIconSize="24dp"
+                app:itemIconTint="@drawable/bottom_nav_color"
+                app:itemTextColor="@drawable/bottom_nav_color"
+                app:itemTextAppearanceActive="@style/BottomNavigationView.Active"
+                app:itemTextAppearanceInactive="@style/BottomNavigationView"
+                app:menu="@menu/navigation" />
+
+
+        </RelativeLayout>
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:background="#414141"
+                android:layout_above="@id/nav2"
+                android:layout_height="0.8dp">
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_above="@+id/nav2"
+                android:layout_marginBottom="0.8dp"
+                android:layout_height="30dp"
+                android:id="@+id/podstilka"
+                android:visibility="gone"
+                android:background="@drawable/trend_donald_sterling">
+
+            </FrameLayout>
+
+
+
 
 
     </RelativeLayout>

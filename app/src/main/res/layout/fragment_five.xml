@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout android:layout_height="match_parent"
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:animateLayoutChanges="true"
+    android:background="#282828"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -173,10 +176,7 @@
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
-
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/enter"
@@ -185,30 +185,24 @@
         tools:context=".MainActivity">
 
 
-
-        <TextView
-            android:id="@+id/icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="106dp"
-            android:text="MIX.TJ"
-            android:textSize="40sp"
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:src="@drawable/alfa_logo2"
             android:layout_centerHorizontal="true"
-            android:textColor="#2c2c2c"
-            android:layout_above="@+id/username"
-            android:fontFamily="@font/googlesans_medium"
-            />
+            android:layout_above="@+id/username"/>
 
         <EditText
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="25dp"
-            android:background="@drawable/et_bg"
-            android:hint="Электронный адрес"
+            android:background="@drawable/et_bg2"
+            android:hint="Номер мобильного"
             android:inputType="textEmailAddress"
             android:padding="10dp"
-            android:textColor="#000"
+            android:textColorHint="#8c8c8c"
+            android:textColor="#FFF"
             android:layout_above="@+id/password"
             android:textSize="13sp"
             android:paddingStart="20dp"
@@ -218,28 +212,21 @@
             />
 
 
-
-
-
-
-
-
-
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/et_bg"
+            android:background="@drawable/et_bg2"
             android:hint="Пароль"
+            android:textColorHint="#8c8c8c"
             android:inputType="textPassword"
             android:padding="10dp"
             android:layout_centerVertical="true"
-            android:textColor="#000"
+            android:textColor="#FFF"
             android:textSize="13sp"
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
-
             android:paddingStart="20dp"
             android:paddingEnd="16dp"/>
 
@@ -277,58 +264,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Получить помощь со входом"
-                android:textColor="#000"
-                android:layout_marginLeft="2sp"
+                android:text="@string/forgot"
+                android:textColor="#FFF"
                 android:layout_toEndOf="@+id/forgot_password2"
                 android:textSize="11sp"
-                android:singleLine="true"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/forgot_password2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Забыли свои учетные данные?"
-                android:onClick="ForgotPassword"
-                android:textColor="#000"
-                android:textSize="11sp"/>
+                android:textAlignment="center"
+                android:gravity="center" />
 
 
 
         </RelativeLayout>
 
 
-        <View
-            android:id="@+id/footer_line"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="45dp"
-            android:background="#e0e0e0"/>
-
-
-
-        <LinearLayout
-
-            android:layout_width="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/text11"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:textAlignment="center"
-                android:gravity="center"
-                android:text="Instagramm: @lumies"
-                android:fontFamily="@font/googlesans_medium"
-                android:textSize="11sp"/>
-
-
-
-        </LinearLayout>
 
 
         <View
@@ -350,6 +297,8 @@
             android:layout_height="80dp"
             android:gravity="center"
             android:text="или"
+            android:textColor="#8c8c8c"
+
             android:textAllCaps="true"
             android:textSize="13sp" />
 
@@ -379,11 +328,11 @@
                 android:layout_height="wrap_content"
                 android:text="У вас еще нет аккаунта? "
                 android:textSize="11sp"
-                android:textColor="#000"/>
+                android:textColor="#FFF"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#000"
+                android:textColor="#FFF"
                 android:textStyle="bold"
                 android:text="Зарегистрируйтесь."
                 android:textSize="11sp"
@@ -395,6 +344,7 @@
 
 
     </RelativeLayout>
+
 
 
 

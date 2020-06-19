@@ -4,13 +4,11 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
-        multiDexEnabled true
         applicationId "com.side.lumies"
-        minSdkVersion 17
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -45,9 +43,10 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-alpha03'
 
     implementation 'org.salient.artvideoplayer:artplayer-java:0.6.0'
-
+    // Default control panel: optional
     implementation 'org.salient.artvideoplayer:artplayer-ui:0.6.0'
 
+    //ijkPlayer: optional
     implementation 'org.salient.artvideoplayer:artplayer-ijk:0.6.0'
     implementation "org.salient.artvideoplayer:artplayer-armv7a:0.6.0"
 

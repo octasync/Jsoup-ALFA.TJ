@@ -5,14 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.animation.ObjectAnimator;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.media.MediaActionSound;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,7 +21,6 @@ import android.view.Gravity;
 import android.view.OrientationEventListener;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -68,7 +63,7 @@ public class VideoViewActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
      NewControlPanel controlPanel;
     String videoUrlStream = "", urla = "";
-    RelativeLayout btn1, btn2;
+
     RelativeLayout progressBar;
     ScrollView scrollView;
     TextView mainText, raiting, yearss, seasons, buget, descript, starring, director;
@@ -84,25 +79,6 @@ public class VideoViewActivity extends AppCompatActivity {
         parent_view = findViewById(R.id.parent_view);
 
         parent_view.setPadding(0, getStatusBarHeight(), 0, 0);
-        btn1 =  findViewById(R.id.btn1);
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                android.content.ClipboardManager clipboardManager = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
-                android.content.ClipData clipData = android.content.ClipData.newPlainText("Text Label", videoUrlStream);
-                clipboardManager.setPrimaryClip(clipData);
-                Toast.makeText(getApplicationContext(),"Ссылка скопирована!",Toast.LENGTH_SHORT).show();
-
-            }
-        });
-        btn2 =  findViewById(R.id.btn2);
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(videoUrlStream));
-                startActivity(browserIntent);
-            }
-        });
 
         scrollView = findViewById(R.id.scrolling);
         raiting = findViewById(R.id.raiting);
@@ -266,6 +242,7 @@ public class VideoViewActivity extends AppCompatActivity {
                 urla = urla.substring(is+1, urla.length());
 
             }
+            Toast.makeText(getApplicationContext(), urla, Toast.LENGTH_SHORT).show();
             new FindVideoUrl().execute();
         }
 
@@ -301,6 +278,7 @@ public class VideoViewActivity extends AppCompatActivity {
                 name = name.substring(i4+1, name.length());
 
                 videoUrlStream = save.substring(i1+1, i1+i2+1);
+                Toast.makeText(getApplicationContext(), videoUrlStream, Toast.LENGTH_SHORT).show();
                 playVideos();
 
 
@@ -327,21 +305,19 @@ public class VideoViewActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (parent_view.getPaddingTop()==0){
+        if (isLandscape()){
             fullScreenChange();
         }
-        else {
-            if (MediaPlayerManager.instance().backPress()) {
-                return;
-            }
-            this.finish();
-            MediaPlayerManager.instance().releaseMediaPlayer();
-            videoView.pause();
-            controlPanel = null;
+        if (MediaPlayerManager.instance().backPress()) {
+            return;
         }
+        this.finish();
+        MediaPlayerManager.instance().releaseMediaPlayer();
+        videoView.pause();
+        controlPanel = null;
+
+        super.onBackPressed();
     }
-
-
 
     @Override
     protected void onPause() {
@@ -756,6 +732,7 @@ public class VideoViewActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
+            Toast.makeText(getApplicationContext(), nameEnglish+" "+nameRussian+" "+year+" "+budzhet+" "+imdb+" "+kinopoisk, Toast.LENGTH_SHORT).show();
 
             float rate = Float.parseFloat(kinopoisk);
             if (!nameEnglish.equals("")) {
@@ -850,6 +827,7 @@ public class VideoViewActivity extends AppCompatActivity {
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
             if (!videoUrlStream.equals("{full_link_to_video}")) {
+                Toast.makeText(getApplicationContext(), videoUrlStream, Toast.LENGTH_LONG).show();
                 playVideos();
                 new GetContacts3().execute();
                 seasons.setText("Фильм");

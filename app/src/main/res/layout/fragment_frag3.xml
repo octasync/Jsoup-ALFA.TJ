@@ -52,7 +52,7 @@
         android:id="@+id/checkbox"
         android:buttonTint="#FFF"
         android:layout_centerHorizontal="true"
-        android:text="Я всё понял!"/>
+        android:text="Я знаю как убирать рекламу"/>
 
 
 

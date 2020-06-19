@@ -25,7 +25,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/first"
         android:layout_marginTop="10dp"
-        android:text="Клиент программа ALFA.TJ"
+        android:text="В приложении присутствует реклама!"
         android:textColor="#FFF"
         android:textSize="20dp"
         android:textAlignment="center"
@@ -46,7 +46,7 @@
         android:layout_marginRight="16dp"
         android:textAlignment="center"
         android:textColor="#FFF"
-        android:text="Это приложение не официальное, и сделанно исключительно для удобства просмотра контента... "/>
+        android:text="Чтобы убрать рекламу нужно на неё нажать, и подождать несколько секунд. Затем она исчезнет на 3 часа"/>
 
 </RelativeLayout>
 </RelativeLayout>
