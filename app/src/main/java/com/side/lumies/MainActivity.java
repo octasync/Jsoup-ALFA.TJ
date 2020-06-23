@@ -278,7 +278,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     public void GoCheck() {
-        new FindVideoUrl().execute();
+        new Registering().execute();
     }
 
 
@@ -313,7 +313,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         return true;
     }
 
-    static class FindVideoUrl extends AsyncTask<Void, Void, Void> {
+    static class Registering extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {

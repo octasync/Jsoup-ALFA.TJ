@@ -1,50 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#1f2122"
-    android:layout_height="match_parent"
-    tools:context=".Four">
+    android:background="#282828"
+    android:animateLayoutChanges="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/bottom1"
+        android:animateLayoutChanges="true"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+        <ProgressBar
+            android:theme="@style/ProgressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:id="@+id/progress_circular"
+            android:layout_marginTop="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
 
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingBottom="80dp"
+            android:clipToPadding="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Comming soon"
-        android:textColor="#FFF"
-        android:fontFamily="@font/googlesans_medium"
-        android:textSize="25dp"
-        android:id="@+id/com"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/animation_view"
-        android:layout_centerHorizontal="true"
-        />
+        </androidx.recyclerview.widget.RecyclerView>
 
-    <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="01.01.2020"
-    android:textColor="#FFF"
-    android:layout_below="@+id/com"
-        android:id="@+id/comicon"
-    android:fontFamily="@font/googlesans_medium"
-    android:textSize="20dp"
-    android:layout_centerHorizontal="true"
-    />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Финальное обновление с доступом ко всем возможностям!"
-        android:textAlignment="center"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:textColor="#FFF"
-        android:layout_below="@+id/comicon"
-        android:fontFamily="@font/googlesans_medium"
-        android:textSize="13dp"
-        android:layout_centerHorizontal="true"
-        />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/progressBar"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="80dp">
+            <ProgressBar
+                android:theme="@style/ProgressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:background="@android:color/transparent" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/naetomvsyo"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="80dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingRight="16dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="10sp"
+                android:elevation="5sp"
+                android:paddingBottom="10sp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/et_bg3"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="На этом, пока что, всё!"
+                    android:textStyle="normal"
+                    android:textSize="12dp"
+                    android:textColor="#FFF"
+
+                    />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </RelativeLayout>
+

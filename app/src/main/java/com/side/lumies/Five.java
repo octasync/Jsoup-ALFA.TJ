@@ -1,10 +1,13 @@
 package com.side.lumies;
 
 
+import android.app.MediaRouteButton;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Process;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +36,8 @@ import androidx.fragment.app.Fragment;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.content.Context.MODE_PRIVATE;
+import static android.os.Process.THREAD_PRIORITY_BACKGROUND;
+import static android.os.Process.THREAD_PRIORITY_MORE_FAVORABLE;
 
 
 /**
@@ -41,7 +47,7 @@ public class Five extends Fragment {
 
 
     public Five() {
-        // Required empty public constructor
+
     }
     private EditText username;
     private EditText password;
@@ -49,6 +55,7 @@ public class Five extends Fragment {
     private String username1, password1;
     private View v;
 
+    ProgressBar progressBar;
     CoordinatorLayout entered;
     RelativeLayout enter, registr, forgot_password;
     TextView textView, email;
@@ -57,12 +64,12 @@ public class Five extends Fragment {
     ImageView edit, more;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 
          v = inflater.inflate(R.layout.fragment_five, container, false);
 
+        progressBar = v.findViewById(R.id.progress);
         final RelativeLayout name = (RelativeLayout) v.findViewById(R.id.play);
         final RelativeLayout text = (RelativeLayout)v. findViewById(R.id.rela);
 
@@ -117,7 +124,7 @@ public class Five extends Fragment {
         registr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://mix.tj/go/register"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://hello.tj/index.php/reg"));
                 startActivity(browserIntent);
             }
         });
@@ -127,7 +134,7 @@ public class Five extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://mix.tj/go/lostpassword"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://hello.tj/index.php/lost"));
                 startActivity(browserIntent);
 
             }
@@ -178,50 +185,7 @@ public class Five extends Fragment {
             public void onClick(View view) {
                 username1 = username.getText().toString();
                 password1 = password.getText().toString();
-                try {
-
-                    Connection.Response loginForm = Jsoup.connect("https://hello.tj/index.php/auth")
-                            .method(Connection.Method.GET)
-                            .execute();
-
-                    Document document = Jsoup.connect("https://hello.tj/index.php/auth")
-                            .followRedirects(true)
-                            .data("mobile2", "985602001")
-                            .data("password2", "planeta...333")
-                            .data("checkbox1", "1")
-                            .data("enter_button", "1")
-                            .cookies(loginForm.cookies())
-                            .post();
-                    Log.d("TAGssssss", "onClick: "+document);
-
-/*
-                    Element hrefElements2 = document.select("div.userSmallMenuName").first();
-
-                    String s = hrefElements2.text();
-                    Toast.makeText(getActivity(), ""+s, Toast.LENGTH_SHORT).show();
-                    if (s!=null){
-                        Toast.makeText(getActivity(), "Неправильно введён логин или пароль", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        Toast.makeText(getActivity(), "Вход выполнен!", Toast.LENGTH_SHORT).show();
-                        SharedPreferences.Editor editor = getActivity().getSharedPreferences("My_pref", MODE_PRIVATE).edit();
-                        editor.putString("username", username1);
-                        editor.putString("password", password1);
-                        editor.apply();
-                        ((MainActivity)getActivity()).username11 = username1;
-                        ((MainActivity)getActivity()).password11 = password1;
-                        Secondable(username1, password1);
-
-
-                    }
- */
-
-
-                } catch (
-                        IOException e) {
-                    e.getMessage();
-                }
-
+                new Registering().execute();
 
             }
         });
@@ -231,7 +195,8 @@ public class Five extends Fragment {
 
         return v;
     }
-    String name, image, emails;
+
+
 
     public void Secondable(String s1, String s2){
         entered.setVisibility(View.VISIBLE);
@@ -311,5 +276,70 @@ public class Five extends Fragment {
     }
 
 
+    class Registering extends AsyncTask<Void, Void, Void> {
+
+        String name;
+        Document doc2;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressBar.setVisibility(View.VISIBLE);
+            enter.setVisibility(View.GONE);
+            entered.setVisibility(View.GONE);
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            Process.setThreadPriority(THREAD_PRIORITY_BACKGROUND + THREAD_PRIORITY_MORE_FAVORABLE);
+
+            try {
+                Connection.Response res = Jsoup.connect("https://hello.tj/index.php/auth")
+                        .data("mobile2", username1)
+                        .data("password2", password1)
+                        .data("checkbox1", "1")
+                        .data("enter_button", "1")
+                        .method(Connection.Method.POST)
+                        .execute();
+
+                Document doc = res.parse();
+                String sessionId = res.cookie("sessionVal");
+                Log.d("TAGsssssss", "doInBackground: " + sessionId);
+                if (!sessionId.equals("")) {
+                    doc2 = Jsoup.connect("http://alfa.tj/smart/watched")
+                            .cookie("sessionVal", sessionId)
+                            .get();
+                    Elements userName = doc2.select("tr");
+                    for (int i = 0 ; i<userName.size();i++){
+                        Log.d("TAGsssssss", "doInBackground: " + userName.get(i));
+                    }
+                    System.out.print("doInBackground: " + doc2.text());
+
+
+                    name = userName.toString();
+
+                }
+
+            } catch (IOException e) {
+                e.getMessage();
+            }
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            Log.d("Googlegg", "onPostExecute: "+name);
+            if (!name.equals("")){
+                progressBar.setVisibility(View.GONE);
+                enter.setVisibility(View.GONE);
+                entered.setVisibility(View.VISIBLE);
+            }
+        }
+
+
+    }
 
 }
