@@ -131,7 +131,10 @@ public class SearchFragment extends Fragment implements RecyclerAdapterSearch.It
         if (arrayList != null) {
             animalNames = arrayList;
         }
+        else {
+            new LapLapi3().execute();
 
+        }
         recyclerView2 = v.findViewById(R.id.recycler_view2);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setReverseLayout(true);
@@ -139,10 +142,12 @@ public class SearchFragment extends Fragment implements RecyclerAdapterSearch.It
         recyclerView2.setLayoutManager(linearLayoutManager);
 
         adapter = new RecyclerAdapterSearch(getActivity(), animalNames);
+
         adapter.setClickListener(this);
 
-
         recyclerView2.setAdapter(adapter);
+
+
 
         search_edit_frame.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -317,6 +322,60 @@ public class SearchFragment extends Fragment implements RecyclerAdapterSearch.It
 
     void hideProgressView() {
         progressBar.setVisibility(View.INVISIBLE);
+    }
+
+
+    class LapLapi3 extends AsyncTask<Void, Void, Void> {
+
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            process = true;
+
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            Process.setThreadPriority(THREAD_PRIORITY_BACKGROUND + THREAD_PRIORITY_MORE_FAVORABLE);
+
+            try {
+
+                Document doc = Jsoup.connect("http://alfa.tj/smart/kinopoisk").get();
+                Elements hrefElements2 = doc.select("div.info");
+                size = hrefElements2.size();
+                titles = new String[12];
+                for (int i = 0; i < hrefElements2.size(); i++) {
+                    titles[i] = hrefElements2.get(i).getElementsByTag("h1").text();
+                    Log.d("planetaaaa", "doInBackground: "+titles[i]);
+                }
+
+                animalNames.addAll(Arrays.asList(titles));
+
+            } catch (IOException e) {
+                e.getMessage();
+            }
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            process = false;
+            hideProgressView();
+            recyclerView2.setVisibility(View.VISIBLE);
+            progress_circular.setVisibility(View.INVISIBLE);
+            main2.setVisibility(View.INVISIBLE);
+            adapter.notifyDataSetChanged();
+
+
+        }
+
+
     }
 
     class LapLapi2 extends AsyncTask<Void, Void, Void> {

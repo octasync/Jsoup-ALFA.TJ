@@ -245,11 +245,6 @@ public class Four extends Fragment {
 
                 for (int i = 0; i < userName.size() - 1; i++) {
 
-                    Log.d("whaaaats", i + " " + hrefElements.get(i + 4).getElementsByTag("a").attr("href"));
-                    Log.d("whaaaats", i + " " + hrefElements2.get(i * 3).text());
-                    Log.d("whaaaats", i + " " + hrefElements3.get(i + 1).getElementsByTag("img").attr("src"));
-                    Log.d("whaaaats", i + " " + hrefElements6.get(i * 3 + 2).text());
-
                     hrefs[i] = hrefElements.get(i + 4).getElementsByTag("a").attr("href");
                     titles[i] = hrefElements2.get(i * 3).text();
                     imagesLink1[i] = hrefElements3.get(i + 1).getElementsByTag("img").attr("src");

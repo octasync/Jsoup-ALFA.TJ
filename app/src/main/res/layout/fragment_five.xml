@@ -13,7 +13,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:id="@+id/entered"
-    android:visibility="gone"
+    android:visibility="visible"
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            android:background="#FFF"
+            android:background="#282828"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
 
@@ -57,7 +57,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#202124"
+                        android:textColor="#FAFAFA"
                         android:textSize="28sp"
                         android:id="@+id/text"
                         android:textAllCaps="true"
@@ -81,7 +81,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:text="my mail"
-                            android:textColor="#5f6368"
+                            android:textColor="#A9A9A9"
                             android:textSize="14sp"
                             android:id="@+id/email"
                             android:layout_centerVertical="true"
@@ -129,8 +129,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/planeta"
-                    android:textColor="#202124"
+                    android:text="Аккаунт"
+                    android:textColor="#FFFFFF"
                     android:fontFamily="@font/googlesans_medium"
                     android:textSize="20sp"/>
 
@@ -142,6 +142,7 @@
                         android:layout_height="48dp"
                         android:layout_toLeftOf="@+id/more"
                         android:id="@+id/edit"
+                        android:tint="#FFFFFF"
                         app:srcCompat="@drawable/ic_mode_edit_black_24dp"
                         android:layout_centerVertical="true"
                         android:padding="12dp"
@@ -151,8 +152,8 @@
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         app:srcCompat="@drawable/ic_exit_to_app_black_24dp"
-                        android:tint="#575757"
                         android:id="@+id/more"
+                        android:tint="#FFFFFF"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:padding="12dp"
@@ -180,7 +181,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/enter"
-        android:visibility="visible"
+        android:visibility="gone"
         android:screenOrientation="portrait"
         tools:context=".MainActivity">
 

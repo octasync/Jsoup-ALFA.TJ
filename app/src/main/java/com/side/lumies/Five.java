@@ -113,7 +113,7 @@ public class Five extends Fragment {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://mix.tj/person/edcrfv"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://hello.tj/edit"));
                 startActivity(browserIntent);
             }
         });
@@ -162,7 +162,7 @@ public class Five extends Fragment {
             Firstable(username1, password1);
         }
         else{
-            Secondable(username1, password1);
+            new Registering().execute();
         }
 
 
@@ -185,6 +185,7 @@ public class Five extends Fragment {
             public void onClick(View view) {
                 username1 = username.getText().toString();
                 password1 = password.getText().toString();
+
                 new Registering().execute();
 
             }
@@ -278,7 +279,7 @@ public class Five extends Fragment {
 
     class Registering extends AsyncTask<Void, Void, Void> {
 
-        String name;
+        String name, photos;
         Document doc2;
 
         @Override
@@ -305,18 +306,15 @@ public class Five extends Fragment {
                 Document doc = res.parse();
                 String sessionId = res.cookie("sessionVal");
                 Log.d("TAGsssssss", "doInBackground: " + sessionId);
+
                 if (!sessionId.equals("")) {
-                    doc2 = Jsoup.connect("http://alfa.tj/smart/watched")
+                    doc2 = Jsoup.connect("https://hello.tj/index.php/profile")
                             .cookie("sessionVal", sessionId)
                             .get();
-                    Elements userName = doc2.select("tr");
-                    for (int i = 0 ; i<userName.size();i++){
-                        Log.d("TAGsssssss", "doInBackground: " + userName.get(i));
-                    }
-                    System.out.print("doInBackground: " + doc2.text());
-
-
-                    name = userName.toString();
+                    Elements userName = doc2.select("h5.myPageName");
+                    Elements photo = doc2.select("div.mainContentMyPageItem");
+                    photos = photo.first().getElementsByTag("img").attr("src");
+                    name = userName.text();
 
                 }
 
@@ -331,11 +329,24 @@ public class Five extends Fragment {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            Log.d("Googlegg", "onPostExecute: "+name);
             if (!name.equals("")){
                 progressBar.setVisibility(View.GONE);
                 enter.setVisibility(View.GONE);
                 entered.setVisibility(View.VISIBLE);
+                textView.setText(name);
+                email.setText(username1);
+                Picasso.get().load("https://hello.tj/avatar/no_avatar.png").into(circleImageView);
+                SharedPreferences.Editor editor = getActivity().getSharedPreferences("My_pref", MODE_PRIVATE).edit();
+                editor.putString("username", username1);
+                editor.putString("password", password1);
+                editor.apply();
+
+            }
+            else {
+                progressBar.setVisibility(View.GONE);
+                enter.setVisibility(View.VISIBLE);
+                entered.setVisibility(View.GONE);
+                Toast.makeText(getActivity(), "Неправильно введён логин или пароль!", Toast.LENGTH_LONG).show();
             }
         }
 
